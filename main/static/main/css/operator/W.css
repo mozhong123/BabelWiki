@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+}
+  .btn_me,.btn_logout{
+    background-color: #222222;
+    color: rgb(131, 131, 131);
+  }
+  .navbar-right a{
+    color: #fff;
+    font-size: 16px;
+  }
+  .navbar {
+    border-radius: 0;
+  }
+  .contaniner_top{
+    margin-top: 30px;
+  }
+  .container{
+    margin-top: 30px;
+  }
+  .W_video{
+    width:1320px ;
+  }
+  .list_head{
+    width: 150px;
+    background-color: #525252;
+    color: #fff;
+    font-weight: bolder;
+  }
+  .list_body{
+    width: 350px;
+    background-image: linear-gradient(90deg,#49cdcd,#9a7053,#af0300);
+    color: #fff;
+    font-weight: bolder;
+    border-radius: 10px;
+  }
+  .list_title{
+    width: 135px;
+    font-weight: bolder;
+    border-radius: 10px;
+  }
+  .list_inner{
+    width: 240px;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+  .list_material_head{
+    font-size: 30px;
+    background-color: #D5D7DB66;
+  }
+  .list_material_body{
+    width: 600px;
+    font-size: 25px;
+    font-weight: bolder;
+  }
+  .skill_order{
+    font-weight: bolder;
+  }
+  .skill_img{
+    width: 100px;
+    height: 92px;
+  }
+  .skill_ds{
+    width: 860px;
+    height: 92;
+  }
+  .btn_submit_first{
+    margin-top: 20px;
+    width: 100px;
+  }
+  .list-group-item-comment{
+    min-height: 100px ;
+  }
+  .btn-reply{
+    width: 80px;
+  }
+  .p3{
+    margin-top: 40px;
+  }
+  .p2{
+    font-size: large;
+  }
+  .btn-delete{
+    width: 80px;
+    margin-left: 5px;
+  }

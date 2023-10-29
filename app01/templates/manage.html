@@ -1,0 +1,441 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'main/css/pool.css' %}" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.css' %}">
+    <style>
+        table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table caption{
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1em 0;
+}
+
+th,td{
+    border: 1px solid #999;
+    text-align: center;
+    padding: 20px 0;
+}
+
+table thead tr{
+    background-color: #008c8c;
+    color: #fff;
+    text-align: center;
+}
+
+table tbody tr:nth-child(odd){
+    background-color: #eee;
+}
+
+table tbody tr:hover{
+    background-color: #ccc;
+}
+
+table tbody tr td:first-child{
+    color: #f40;
+}
+
+table tfoot tr td{
+    text-align: right;
+    padding-right: 20px;
+
+}
+.box {
+
+width: 300px;
+
+height: 200px;
+
+
+text-align:center;
+
+}
+    </style>
+
+    <title>工作小组</title>
+  </head>
+  <body>
+  <!-- 头部导航开始 -->
+
+<header>
+<nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class="navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/record/">工作记录</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/manage/">项目分组</a>
+            </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/process/">提交审批</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--关卡表格开始-->
+<div class="container">
+<table>
+    <div style="width: 200px; height:70px;margin:0 auto;font-size:30px;color:#008c8c">干员项目组</div>
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>主负责人</th>
+            <th>负责内容</th>
+            <th>人数</th>
+            <th>是否加入</th>
+        </tr>
+    </thead>
+    <tbody>
+     {% for manage in manages %}
+        {% if manage.work_type == "干员" %}
+        <tr>
+            <td>{{ manage.work_number }}</td>
+            <th>{{ manage.work_manager }}</th>
+            <th>{{ manage.work_content }}</th>
+            <th>{{ manage.work_num }}</th>
+        {% if vip == 2 %}
+
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已是项目组管理者，无需加入项目组</button>
+            </th>
+        {% else %}
+            {% if ans == 1 %}
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已经加入到该项目组</button>
+            </th>
+                {% else %}
+                <th>
+                 <a href="/{{ manage.idx }}/manage/" class="btn btn-danger btn-xs" onclick="return aaa1();">申请加入</a>
+                </th>
+                {% endif %}
+       {% endif %}
+        </tr>
+
+        {% endif %}
+     {% endfor %}
+
+    </tbody>
+
+    <tfoot>
+            <tr>
+                <td colspan = "5"></td>
+            </tr>
+    </tfoot>
+</table>
+<table>
+    <div style="width: 200px; height:70px;margin:0 auto;font-size:30px;color:#008c8c">敌人项目组</div>
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>主负责人</th>
+            <th>负责内容</th>
+            <th>人数</th>
+            <th>是否加入</th>
+        </tr>
+    </thead>
+    <tbody>
+     {% for manage in manages %}
+        {% if manage.work_type == "敌人" %}
+        <tr>
+            <td>{{ manage.work_number }}</td>
+            <th>{{ manage.work_manager }}</th>
+            <th>{{ manage.work_content }}</th>
+            <th>{{ manage.work_num }}</th>
+        {% if vip == 2 %}
+
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已是项目组管理者，无需加入项目组</button>
+            </th>
+        {% else %}
+            {% if ans == 2 %}
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已经加入到该项目组</button>
+
+            </th>
+                {% else %}
+                <th>
+                 <a href="/{{ manage.idx }}/manage/" class="btn btn-danger btn-xs" onclick="return aaa1();">申请加入</a>
+                </th>
+                {% endif %}
+            {% endif %}
+        </tr>
+        {% endif %}
+     {% endfor %}
+    </tbody>
+
+    <tfoot>
+            <tr>
+                <td colspan = "5"></td>
+            </tr>
+    </tfoot>
+</table>
+<table>
+    <div style="width: 200px; height:70px;margin:0 auto;font-size:30px;color:#008c8c">材料项目组</div>
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>主负责人</th>
+            <th>负责内容</th>
+            <th>人数</th>
+            <th>是否加入</th>
+        </tr>
+    </thead>
+    <tbody>
+         {% for manage in manages %}
+        {% if manage.work_type == "材料" %}
+        <tr>
+            <td>{{ manage.work_number }}</td>
+            <th>{{ manage.work_manager }}</th>
+            <th>{{ manage.work_content }}</th>
+            <th>{{ manage.work_num }}</th>
+        {% if vip == 2 %}
+
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已是项目组管理者，无需加入项目组</button>
+            </th>
+        {% else %}
+            {% if ans == 3 %}
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已经加入到该项目组</button>
+
+            </th>
+                {% else %}
+                <th>
+                 <a href="/{{ manage.idx }}/manage/" class="btn btn-danger btn-xs" onclick="return aaa1();">申请加入</a>
+                </th>
+                {% endif %}
+            {% endif %}
+        </tr>
+        {% endif %}
+     {% endfor %}
+
+    </tbody>
+
+    <tfoot>
+            <tr>
+                <td colspan = "5"></td>
+            </tr>
+    </tfoot>
+</table>
+<table>
+    <div style="width: 200px; height:70px;margin:0 auto;font-size:30px;color:#008c8c">关卡项目组</div>
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>主负责人</th>
+            <th>负责内容</th>
+            <th>人数</th>
+            <th>是否加入</th>
+        </tr>
+    </thead>
+    <tbody>
+         {% for manage in manages %}
+        {% if manage.work_type == "关卡" %}
+        <tr>
+            <td>{{ manage.work_number }}</td>
+            <th>{{ manage.work_manager }}</th>
+            <th>{{ manage.work_content }}</th>
+            <th>{{ manage.work_num }}</th>
+        {% if vip == 2 %}
+
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已是项目组管理者，无需加入项目组</button>
+            </th>
+        {% else %}
+            {% if ans == 4 %}
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已经加入到该项目组</button>
+
+            </th>
+                {% else %}
+                <th>
+                 <a href="/{{ manage.idx }}/manage/" class="btn btn-danger btn-xs" onclick="return aaa1();">申请加入</a>
+                </th>
+                {% endif %}
+            {% endif %}
+        </tr>
+        {% endif %}
+     {% endfor %}
+    </tbody>
+
+    <tfoot>
+            <tr>
+                <td colspan = "5"></td>
+            </tr>
+    </tfoot>
+</table>
+<table>
+    <div style="width: 200px; height:70px;margin:0 auto;font-size:30px;color:#008c8c">卡池项目组</div>
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>主负责人</th>
+            <th>负责内容</th>
+            <th>人数</th>
+            <th>是否加入</th>
+        </tr>
+    </thead>
+    <tbody>
+         {% for manage in manages %}
+        {% if manage.work_type == "卡池" %}
+        <tr>
+            <td>{{ manage.work_number }}</td>
+            <th>{{ manage.work_manager }}</th>
+            <th>{{ manage.work_content }}</th>
+            <th>{{ manage.work_num }}</th>
+        {% if vip == 2 %}
+
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已是项目组管理者，无需加入项目组</button>
+            </th>
+        {% else %}
+            {% if ans == 5 %}
+            <th>
+                 <button  class="btn btn-danger btn-xs" >您已经加入到该项目组</button>
+
+            </th>
+                {% else %}
+                <th>
+                 <a href="/{{ manage.idx }}/manage/" class="btn btn-danger btn-xs" onclick="return aaa1();">申请加入</a>
+                </th>
+                {% endif %}
+            {% endif %}
+        </tr>
+        {% endif %}
+     {% endfor %}
+    </tbody>
+
+    <tfoot>
+            <tr>
+                <td colspan = "5"></td>
+            </tr>
+    </tfoot>
+</table>
+
+
+<script src="{%  static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{%  static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript" >
+                function aaa1()
+                {
+                     if(confirm("您的申请已经提交"))
+                     {
+                         return true;
+                     }else{
+                         return false;
+                     }
+                }
+                function aaa2()
+                {
+                    if(confirm("您已经是超级管理员，无需再加入到项目组中"))
+                     {
+                         return true;
+                     }else{
+                         return false;
+                     }
+                }
+                function aaa3()
+                {
+                    if(confirm("您已经加入到项目组{{ ans }}中，请勿重复申请"))
+                     {
+                         return true;
+                     }else{
+                         return false;
+                     }
+                }
+
+</script>
+</div>
+<!--关卡表格结束-->
+<!--页脚部分开始-->
+<div class="container-fluid container_bottom">
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+</div>
+<!--页脚部分结束-->
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+
+    <script>
+    var result={{result|safe}};
+    var length=result.length;
+    var tbody=document.querySelector('tbody');
+    for(var i=0;i<length;i++)
+    {
+        var tr=document.createElement('tr');
+        for(var j=0;j<4;j++)
+        {
+            if(j==0)
+            {
+                var td=document.createElement('td');
+                var img=document.createElement('img');
+                img.width="400";
+                img.src=result[i][1];
+                td.appendChild(img);
+                tr.appendChild(td);
+            }
+            if(j==1)
+            {
+                var td=document.createElement('td');
+                td.innerHTML=result[i][0];
+                tr.appendChild(td);
+            }
+            if(j>1)
+            {
+                var td=document.createElement('td');
+                td.innerHTML=result[i][j];
+                tr.appendChild(td);
+            }
+        }
+        var x_length=result[0].length;
+        var td_operator=document.createElement('td');
+        for(var k=4;k<x_length;k=k+2)
+        {
+            var a=document.createElement('a');
+            a.href="/operator/"+result[i][k]+"/";
+            var img=document.createElement('img');
+            img.src=result[i][k+1];
+            img.width="90";
+            a.appendChild(img);
+            td_operator.appendChild(a);
+        }
+        tr.appendChild(td_operator);
+        tbody.appendChild(tr);
+    }
+
+    </script><script src="{%  static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{%  static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+
+  </body>
+</html>

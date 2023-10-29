@@ -1,0 +1,32 @@
+.btn_logout{
+    background-color: #222222;
+    color: rgb(131, 131, 131);
+  }
+  .navbar-right a{
+    color: #fff;
+    font-size: 16px;
+  }
+  .navbar {
+    border-radius: 0;
+  }
+  .btn_submit{
+    margin-top: 60px;
+    width: 200px;
+  }
+  .form-upload{
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .form-control-title{
+    height: 60px;
+    font-size: larger;
+  }
+  .form-control-lg{
+    margin-top: 50px;
+  }
+  .form-group-rare{
+    margin-top: 50px;
+  }

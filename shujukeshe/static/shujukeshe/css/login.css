@@ -1,0 +1,62 @@
+/*body {
+  margin: 0;
+  background-image: url('../image/login_bg.jpg');
+	background-repeat:no-repeat;
+  background-position:0% 0%;
+  background-size:cover;
+}*/
+.form-login {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-login{
+  margin-top:80px;
+  font-weight: 400;
+}
+.form-login .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-login .form-control:focus {
+  z-index: 2;
+}
+.form-login input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  color:black;
+  background-color:rgba(0, 0, 0, 0.3);
+  font-family:Georgia, 'Times New Roman', Times, serif
+}
+.form-login input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color:rgba(0, 0, 0, 0.3);
+  font-family:Georgia, 'Times New Roman', Times, serif
+}
+form a{
+  display: inline-block;
+  margin-top:25px;
+  font-size: 12px;
+  line-height: 10px;
+}
+.btn_login,.btn_register{
+  background-color: #222222;
+  color: rgb(131, 131, 131);
+}
+.navbar-right a{
+  color: #fff;
+  font-size: 16px;
+}
+.navbar {
+  border-radius: 0;
+}
+.btn_submit{
+  margin-top: 20px;
+}

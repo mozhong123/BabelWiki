@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+}
+.btn_me,.btn_logout{
+    background-color: #222222;
+    color: rgb(131, 131, 131);
+}
+.navbar-right a{
+    color: #fff;
+    font-size: 16px;
+}
+.navbar {
+    border-radius: 0;
+}
+.list-group-item{
+    height: 80px;
+    font-size: larger;
+}
+.btn_change{
+    width: 200px;
+    text-align: center;
+}

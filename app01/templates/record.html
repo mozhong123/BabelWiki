@@ -1,0 +1,210 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'main/css/pool.css' %}" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.css' %}">
+    <style>
+        .navbar {
+            border-radius: 0;
+        }
+
+        .more .more-item {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+
+    <title>工作记录</title>
+  </head>
+  <body>
+  <!-- 头部导航开始 -->
+
+<header>
+<nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class="navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/record/">工作记录</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/manage/">项目分组</a>
+            </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/process/">提交审批</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--关卡表格开始-->
+<div class="container-fluid clearfix">
+    <div class="col-sm-9">
+
+        {% for worker in workers %}
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" data-src="holder.js/64x64" alt="64x64"
+                         src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xN2QzYzQyY2ZjNyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE3ZDNjNDJjZmM3Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40NjA5Mzc1IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="
+                         data-holder-rendered="true" style="width: 64px; height: 64px;">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading" style = "color:#008c8c">{{ worker.staff_work_type}}</h4>
+                <div>
+                    <i class="fa fa-star" aria-hidden="true" style="color: #f0ad4e"></i>
+                    <i class="fa fa-star" aria-hidden="true" style="color: #f0ad4e"></i>
+                    <i class="fa fa-star" aria-hidden="true" style="color: #f0ad4e"></i>
+                    <i class="fa fa-star" aria-hidden="true" style="color: #f0ad4e"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>{{ worker.staff_id }}成功{{ worker.staff_work_type }}了{{ worker.staff_option }}表单{{ worker.staff_name }}</p>
+                <p style = "color:#f40">{{ worker.staff_state }}</p>
+
+                <div class="more clearfix">
+                    <div class="more-item">
+                        <i class="fa fa-calendar" aria-hidden="true"></i> {{ worker.staff_time }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+
+    </div>
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-fire" aria-hidden="true" style="color:#f0ad4e;font-size: 18px"></i>
+                昨日新增
+            </div>
+            <div class="panel-body">
+                {% for last_contributer in last_contributer %}
+                {{last_contributer.staff_id}}{{last_contributer.staff_work}}了{{last_contributer.staff_optio}}表单中的{{last_contributer.staff_name}}<br>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">最多点击</div>
+            <div class="panel-body">
+                干员页面'{{operator.name}}'总共被点击{{operator.amounts}}次
+            </div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">最多贡献</div>
+            <div class="panel-body">
+                {{contributer.name}}为爱发电了{{contributer.amounts}}次
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">用户信息处理</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">确 定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--关卡表格结束-->
+<!--页脚部分开始-->
+<div class="container-fluid container_bottom">
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+</div>
+<!--页脚部分结束-->
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+
+    <script>
+    var result={{result|safe}};
+    var length=result.length;
+    var tbody=document.querySelector('tbody');
+    for(var i=0;i<length;i++)
+    {
+        var tr=document.createElement('tr');
+        for(var j=0;j<4;j++)
+        {
+            if(j==0)
+            {
+                var td=document.createElement('td');
+                var img=document.createElement('img');
+                img.width="400";
+                img.src=result[i][1];
+                td.appendChild(img);
+                tr.appendChild(td);
+            }
+            if(j==1)
+            {
+                var td=document.createElement('td');
+                td.innerHTML=result[i][0];
+                tr.appendChild(td);
+            }
+            if(j>1)
+            {
+                var td=document.createElement('td');
+                td.innerHTML=result[i][j];
+                tr.appendChild(td);
+            }
+        }
+        var x_length=result[0].length;
+        var td_operator=document.createElement('td');
+        for(var k=4;k<x_length;k=k+2)
+        {
+            var a=document.createElement('a');
+            a.href="/operator/"+result[i][k]+"/";
+            var img=document.createElement('img');
+            img.src=result[i][k+1];
+            img.width="90";
+            a.appendChild(img);
+            td_operator.appendChild(a);
+        }
+        tr.appendChild(td_operator);
+        tbody.appendChild(tr);
+    }
+    </script>
+  <script src="{%  static 'js/jquery-3.6.0.min.js' %}"></script>
+  <script src="{%  static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

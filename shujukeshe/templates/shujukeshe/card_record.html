@@ -1,0 +1,120 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'main/css/operator.css' %}" rel="stylesheet"/>
+    <title>干员档案</title>
+  </head>
+  <body>
+  <!-- 头部导航开始 -->
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class"navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">干员档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/enemy/">敌人档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/material/">道具材料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/level/">关卡一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pool/">卡池一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--表格部分开始-->
+<div class="container">
+<table id="operator_table" class="table table-bordered table-hover align-middle text-center">
+
+<thead>
+<tr>
+<th>代号</th>
+<th>稀有度</th>
+<th>抽取时间</th>
+<th>是否为New</th>
+</tr>
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+</div>
+<!--表格部分结束-->
+<!--页脚部分开始-->
+<div class="container-fluid container_bottom">
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+</div>
+<!--页脚部分结束-->
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+
+
+   <script>
+    var result={{ result | safe }};
+    var tbody = document.querySelector('tbody');
+    for (var i = 0; i < result.length; i++){
+        var tr = document.createElement('tr');
+        tbody.appendChild(tr);
+        for (var k=1;k<5;k++) {
+            var td = document.createElement('td');
+            if(k==1)
+            {
+                td.innerHTML = result[i][2];
+            }
+            if(k==2)
+            {
+                td.innerHTML = result[i][3];
+            }
+            if(k==3)
+            {
+                td.innerHTML = result[i][1];
+            }
+            if(k==4)
+            {
+                if(result[i][4]==true)
+                {
+                    td.innerHTML = '是';
+                }
+                else
+                {
+                    td.innerHTML = '否';
+                }
+            }
+            tr.appendChild(td);
+        }
+    }
+   </script>
+  </body>
+</html>

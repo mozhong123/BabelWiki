@@ -1,0 +1,607 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'main/css/operator/W.css' %}" rel="stylesheet"/>
+    <title>干员档案_W</title>
+  </head>
+  <body>
+  <!-- 头部导航开始 -->
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class"navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operator/">干员档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/enemy/">敌人档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/material/">道具材料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/level/">关卡一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pool/">卡池一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--面包导航-->
+<div class="container-sm contaniner_top">
+<h1>W</h1>
+<hr>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="/index/">主页</a></li>
+<li class="breadcrumb-item"><a href="/operator/">干员档案</a></li>
+<li class="breadcrumb-item active" aria-current="page">W</li>
+</ol>
+</nav>
+</div>
+<!--面包导航结束-->
+<!--干员立绘展示-->
+<div class="container container_image">
+<h5>干员立绘</h5>
+<hr>
+<div>
+<video class="W_video" autoplay="autoplay" loop="loop" muted="muted">
+<source src="/static/main/video/W.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+<!--干员立绘展示结束-->
+<!--干员获得方式开始-->
+<div class="container container_get_operator">
+<h5>获得方式</h5>
+<hr>
+
+<ul class="list-group list-group-horizontal text-center" id="operator_get">
+<li class="list-group-item list_head">获得方式</li>
+<li class="list-group-item list_body">遗愿焰火卡池</li>
+</ul>
+
+<ul class="list-group list-group-horizontal text-center" id="available_time">
+<li class="list-group-item list_head">上线时间</li>
+<li class="list-group-item list_body">2020-5-1</li>
+</ul>
+
+<ul class="list-group list-group-horizontal text-center" id="unavailable_time">
+<li class="list-group-item list_head">下线时间</li>
+<li class="list-group-item list_body">2020-5-15</li>
+</ul>
+
+</div>
+<!--干员获得方式结束-->
+<!--干员固有属性开始-->
+<div class="container container_operator_attribute_fixed">
+<h5>固有属性</h5>
+<hr>
+<ul class="list-group list-group-horizontal text-center" id="attribute_fixed_1">
+<li class="list-group-item list_title">再部署时间</li>
+<li class="list-group-item list_inner" id="b_1"></li>
+<li class="list-group-item list_title">初始部署费用</li>
+<li class="list-group-item list_inner" id="b_2"></li>
+</ul>
+
+<ul class="list-group list-group-horizontal text-center" id="attribute_fixed_2">
+<li class="list-group-item list_title">阻挡数</li>
+<li class="list-group-item list_inner" id="b_3"></li>
+<li class="list-group-item list_title">攻击间隔</li>
+<li class="list-group-item list_inner" id="b_4"></li>
+</ul>
+
+</div>
+<!--干员固有属性结束-->
+<!--干员成长属性开始-->
+<div class="container container_operator_attribute_grow">
+<h5>成长属性</h5>
+<hr>
+
+<table class="table table-bordered align-middle text-center" id="table_attribute">
+<thead>
+<tr>
+<th></th>
+<th class="table-danger">生命上限</th>
+<th class="table-danger">攻击力</th>
+<th class="table-danger">防御力</th>
+<th class="table-danger">法术抗性</th>
+</tr>
+</thead>
+
+<tbody>
+<tr  id="a_1">
+<td>精英0 1级</td>
+</tr>
+<tr  id="a_2">
+<td>精英0 50级</td>
+</tr>
+<tr  id="a_3">
+<td>精英1 80级</td>
+</tr>
+<tr  id="a_4">
+<td>精英2 90级</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--干员成长属性结束-->
+<!--干员材料开始-->
+<div class="container container_operator_material">
+<h5>精英化材料</h5>
+<hr>
+<ul class="list-group list-group-horizontal text-center" id="material">
+<li class="list-group-item list_material_head">
+<img width="100px" src="/static/main/image/others/elite1.png"></img>
+<span>→</span>
+<img width="100px" src="/static/main/image/others/elite2.png"></img>
+</li>
+<li class="list-group-item list_material_body">
+<a id="material_1"><img width="100px" id="material_img_1"></img></a>
+<span style="bottom:8px; left:280px; position:absolute; "id="q_1"></span>
+<a id="material_2"><img width="100px" id="material_img_2"></img></a>
+<span style="bottom:8px; left:390px; position:absolute; "id="q_2"></span>
+</li>
+</ul>
+</div>
+<!--干员材料结束-->
+<!--干员天赋开始-->
+<div class="container container_operator_talent">
+<h5>天赋</h5>
+<hr>
+
+<table class="table table-bordered align-middle text-center" id="table_talent">
+<thead>
+<tr>
+<th class="table-info">天赋</th>
+<th class="table-info">名称</th>
+<th class="table-info">描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr  id="tl_1">
+<td>第一天赋</td>
+</tr>
+<tr  id="tl_2">
+<td>第二天赋</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<!--干员天赋结束-->
+<!--干员潜能开始-->
+<div class="container container_operator_potencial">
+<h5>潜能</h5>
+<hr>
+
+<table class="table table-bordered align-middle text-center" id="table_potencial">
+<thead>
+<tr>
+<th class="table-primary">潜能二</th>
+<th class="table-primary">潜能三</th>
+<th class="table-primary">潜能四</th>
+<th class="table-primary">潜能五</th>
+<th class="table-primary">潜能六</th>
+</tr>
+</thead>
+
+<tbody>
+<tr  id="pt">
+
+</tr>
+</tbody>
+</table>
+
+</div>
+<!--干员潜能结束-->
+<!--干员技能开始-->
+<div class="container container_operator_skill">
+<h5>技能</h5>
+<hr>
+<span class="skill_order">技能一（精英零开放）</span>
+<table class="table table-bordered align-middle text-center" id="table_skill1">
+<tr>
+<th class="table-light skill_img"><img src="/static/main/image/skills/W_1.png"></img></th>
+<th class="table-light skill_ds">描述</th>
+<th class="table-light">初始技力</th>
+<th class="table-light">技力消耗</th>
+<th class="table-light">持续时间</th>
+</tr>
+
+<tr  id="sk_1">
+
+</tr>
+</table>
+
+<span class="skill_order">技能二（精英一开放）</span>
+<table class="table table-bordered align-middle text-center" id="table_skill2">
+<tr>
+<th class="table-light skill_img"><img src="/static/main/image/skills/W_2.png"></img></th>
+<th class="table-light skill_ds">描述</th>
+<th class="table-light">初始技力</th>
+<th class="table-light">技力消耗</th>
+<th class="table-light">持续时间</th>
+</tr>
+
+<tr  id="sk_2">
+
+</tr>
+</table>
+
+<span class="skill_order">技能三（精英二开放）</span>
+<table class="table table-bordered align-middle text-center" id="table_skill3">
+<tr>
+<th class="table-light skill_img"><img src="/static/main/image/skills/W_3.png"></img></th>
+<th class="table-light skill_ds">描述</th>
+<th class="table-light">初始技力</th>
+<th class="table-light">技力消耗</th>
+<th class="table-light">持续时间</th>
+</tr>
+
+<tr  id="sk_3">
+
+</tr>
+</table>
+
+</div>
+<!--干员技能结束-->
+<!--评论区部分开始-->
+<!--评论区输入框-->
+<div class="container container-comment-input">
+<h5>评论区</h5>
+<hr>
+<div class="col">
+<form class="first_comment_form" action="/operator/W/" method="POST">
+{% csrf_token %}
+<div class="form-group">
+<textarea name="first_comment" class="form-control" rows="8"></textarea>
+</div>
+    <div>
+        <button type="submit" class="btn btn-primary btn_submit_first">发表</button>
+        <button class="btn btn-danger btn_submit_first" type="reset">清空</button>
+    </div>
+</form>
+</div>
+<hr>
+</div>
+<!--评论区输入框结束-->
+<!--评论区展示-->
+<div class="container container-show">
+<div class="card">
+<ul class="list-group" id="comment">
+
+</ul>
+</div>
+</div>
+<!--评论区展示结束-->
+<!--评论区部分结束-->
+<!--页脚部分开始-->
+<div class="container-fluid container_bottom">
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+<!--页脚部分结束-->
+<!--模态弹窗开始-->
+<!-- Main-Modal window1-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="staticBackdropLabel">回复评论</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<form class="reply_comment_form" action="/operator/W/" method="POST">
+<div class="modal-body">
+    {% csrf_token %}
+    <div class="form-group">
+    <textarea name="reply_comment" class="form-control" rows="6"></textarea>
+    <input type="hidden" name="id" id="who"></input>
+    </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+  <button class="btn btn-danger" type="reset">清空</button>
+  <button type="submit" class="btn btn-primary">回复</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- Main-Modal window2-->
+<div class="modal fade" id="staticdelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticdelete" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="staticdelete">删除评论</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<form class="reply_comment_form" action="/operator/W/" method="GET">
+<div class="modal-body">
+    <p>确定删除这条评论？</p>
+    <div class="form-group">
+    <input type="hidden" name="delete_id" id="delete_who"></input>
+    </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+  <button type="submit" class="btn btn-danger">确定</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!--模态弹窗结束--> 
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+
+    <script>
+    var result_1={{result_1|safe}};
+    var tr_a_1=document.querySelector("#a_1");
+    var tr_a_2=document.querySelector("#a_2");
+    var tr_a_3=document.querySelector("#a_3");
+    var tr_a_4=document.querySelector("#a_4");
+    for(var i=0;i<16;i++)
+    {
+        var td=document.createElement('td');
+        td.innerHTML=result_1[i+2];
+        if(i<4)
+        {
+            tr_a_1.appendChild(td);
+        }
+        if(i>=4&&i<8)
+        {
+            tr_a_2.appendChild(td);
+        }
+        if(i>=8&&i<12)
+        {
+            tr_a_3.appendChild(td);
+        }
+        if(i>=12)
+        {
+            tr_a_4.appendChild(td);
+        }
+    }
+    </script>
+
+    <script>
+    var result_2={{result_2|safe}}
+    var li_b_1=document.querySelector("#b_1");
+    var li_b_2=document.querySelector("#b_2");
+    var li_b_3=document.querySelector("#b_3");
+    var li_b_4=document.querySelector("#b_4");
+    li_b_1.innerHTML=result_2[0];
+    li_b_2.innerHTML=result_2[1];
+    li_b_3.innerHTML=result_2[2];
+    li_b_4.innerHTML=result_2[3];
+    </script>
+     
+     <script>
+     var result_3={{result_3|safe}}
+     var img_1=document.querySelector("#material_img_1");
+     var img_2=document.querySelector("#material_img_2");
+     var a_1=document.querySelector("#material_1");
+     var a_2=document.querySelector("#material_2");
+     var q_1=document.querySelector("#q_1");
+     var q_2=document.querySelector("#q_2");
+     img_1.src=result_3[0][0];
+     img_2.src=result_3[1][0];
+     a_1.href="/material/"+result_3[0][1]+"/";
+     a_2.href="/material/"+result_3[1][1]+"/";
+     q_1.innerHTML=result_3[0][2];
+     q_2.innerHTML=result_3[1][2];
+     </script>
+
+     <script>
+     var result_4={{result_4|safe}}
+     var tl_1=document.querySelector("#tl_1");
+     var tl_2=document.querySelector("#tl_2");
+     var td1=document.createElement('td');
+     var td2=document.createElement('td');
+     var td3=document.createElement('td');
+     var td4=document.createElement('td');
+     td1.innerHTML=result_4[1];
+     tl_1.appendChild(td1);
+     td2.innerHTML=result_4[2];
+     tl_1.appendChild(td2);
+     td3.innerHTML=result_4[3];
+     tl_2.appendChild(td3);
+     td4.innerHTML=result_4[4];
+     tl_2.appendChild(td4);
+     </script>
+
+    <script>
+     var result_5={{result_5|safe}}
+     var pt=document.querySelector("#pt");
+     var td1=document.createElement('td');
+     var td2=document.createElement('td');
+     var td3=document.createElement('td');
+     var td4=document.createElement('td');
+     var td5=document.createElement('td');
+     td1.innerHTML=result_5[1];
+     pt.appendChild(td1);
+     td2.innerHTML=result_5[2];
+     pt.appendChild(td2);
+     td3.innerHTML=result_5[3];
+     pt.appendChild(td3);
+     td4.innerHTML=result_5[4];
+     pt.appendChild(td4);
+     td5.innerHTML=result_5[5];
+     pt.appendChild(td5);
+     </script>
+
+    <script>
+     var result_6={{result_6|safe}}
+     var sk_1=document.querySelector("#sk_1");
+     var td1=document.createElement('td');
+     var td2=document.createElement('td');
+     var td3=document.createElement('td');
+     var td4=document.createElement('td');
+     var td5=document.createElement('td');
+     td1.innerHTML=result_6[1];
+     sk_1.appendChild(td1);
+     td2.innerHTML=result_6[2];
+     sk_1.appendChild(td2);
+     td3.innerHTML=result_6[3];
+     sk_1.appendChild(td3);
+     td4.innerHTML=result_6[4];
+     sk_1.appendChild(td4);
+     td5.innerHTML=result_6[5];
+     sk_1.appendChild(td5);
+
+     var sk_2=document.querySelector("#sk_2");
+     var td1=document.createElement('td');
+     var td2=document.createElement('td');
+     var td3=document.createElement('td');
+     var td4=document.createElement('td');
+     var td5=document.createElement('td');
+     td1.innerHTML=result_6[6];
+     sk_2.appendChild(td1);
+     td2.innerHTML=result_6[7];
+     sk_2.appendChild(td2);
+     td3.innerHTML=result_6[8];
+     sk_2.appendChild(td3);
+     td4.innerHTML=result_6[9];
+     sk_2.appendChild(td4);
+     td5.innerHTML=result_6[10];
+     sk_2.appendChild(td5);
+
+     var sk_3=document.querySelector("#sk_3");
+     var td1=document.createElement('td');
+     var td2=document.createElement('td');
+     var td3=document.createElement('td');
+     var td4=document.createElement('td');
+     var td5=document.createElement('td');
+     td1.innerHTML=result_6[11];
+     sk_3.appendChild(td1);
+     td2.innerHTML=result_6[12];
+     sk_3.appendChild(td2);
+     td3.innerHTML=result_6[13];
+     sk_3.appendChild(td3);
+     td4.innerHTML=result_6[14];
+     sk_3.appendChild(td4);
+     td5.innerHTML=result_6[15];
+     sk_3.appendChild(td5);
+     </script>
+
+    <script>
+    var comments={{comments|safe}};
+    var ul=document.querySelector("#comment");
+    var length=comments.length;
+    for(var i=0;i<length;i++)
+    {
+        var li=document.createElement('li');
+        li.className="list-group-item list-group-item-light list-group-item-comment";
+        if(comments[i][3]!='')
+        {
+            var p1=document.createElement('p');
+            p1.className="p1";
+            p1.className="list-group-item list-group-item-warning";
+            p1.innerHTML="回复@"+comments[i][3]+" ："+comments[i][4];
+            li.appendChild(p1);
+            var p2=document.createElement('p');
+            p2.className="p2";
+            p2.innerHTML=comments[i][0]+"："+comments[i][1];
+            li.appendChild(p2);
+            var p3=document.createElement('p');
+            p3.innerHTML="第"+(i+1)+"楼"+"——"+"发表于 "+comments[i][2];
+            p3.className="p3";
+            li.appendChild(p3);
+            var div=document.createElement('div');
+            var botton=document.createElement('botton');
+            botton.className="btn btn-info btn-reply";
+            botton.setAttribute("data-bs-toggle", "modal");
+            botton.setAttribute("data-bs-target", "#staticBackdrop");
+            botton.id=i+1;
+            botton.innerHTML="回复";
+            var botton_d=document.createElement('botton');
+            botton_d.className="btn btn-danger btn-delete";
+            botton_d.setAttribute("data-bs-toggle", "modal");
+            botton_d.setAttribute("data-bs-target", "#staticdelete");
+            botton_d.id=i+1;
+            botton_d.innerHTML="删除";
+            if("{{ request.session.user_name }}"!=comments[i][0])
+            {
+                botton_d.setAttribute("style", "display:None");
+            }
+            div.appendChild(botton);
+            div.appendChild(botton_d);
+            li.appendChild(div);
+        }
+        else
+        {
+            var p2=document.createElement('p');
+            p2.innerHTML=comments[i][0]+"："+comments[i][1];
+            li.appendChild(p2);
+            p2.className="p2";
+            var p3=document.createElement('p');
+            p3.innerHTML="第"+(i+1)+"楼"+"——"+"发表于 "+comments[i][2];
+            p3.className="p3";
+            li.appendChild(p3);
+            var div=document.createElement('div');
+            var botton=document.createElement('botton');
+            botton.className="btn btn-info btn-reply";
+            botton.setAttribute("data-bs-toggle", "modal");
+            botton.setAttribute("data-bs-target", "#staticBackdrop");
+            botton.id=i+1;
+            botton.innerHTML="回复";
+            var botton_d=document.createElement('botton');
+            botton_d.className="btn btn-danger btn-delete";
+            botton_d.setAttribute("data-bs-toggle", "modal");
+            botton_d.setAttribute("data-bs-target", "#staticdelete");
+            botton_d.id=i+1;
+            botton_d.innerHTML="删除";
+            if("{{ request.session.user_name }}"!=comments[i][0])
+            {
+                botton_d.setAttribute("style", "display:None");
+            }
+            div.appendChild(botton);
+            div.appendChild(botton_d);
+            li.appendChild(div);
+        }
+        ul.appendChild(li);
+    }
+    </script>
+
+    <script>
+        var who=document.querySelector("#who");
+        $(".btn-reply").click(function (){
+           who.setAttribute("value",$(this).attr("id"));          
+        })
+    </script>
+
+    <script>
+        var delete_who=document.querySelector("#delete_who");
+        $(".btn-delete").click(function (){
+           delete_who.setAttribute("value",$(this).attr("id"));          
+        })
+    </script>
+
+  </body>
+</html>

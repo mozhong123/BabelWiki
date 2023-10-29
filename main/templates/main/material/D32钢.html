@@ -1,0 +1,125 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'main/css/material/D32钢.css' %}" rel="stylesheet"/>
+    <title>道具资料_D32钢</title>
+  </head>
+  <body>
+  <!-- 头部导航开始 -->
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class"navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link" href="/operator/">干员档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">敌人档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/material/">道具材料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">关卡一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">卡池一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--材料名片开始-->
+<div class="container card_container">
+<div class="row">
+
+<div class="card text-center card_material">
+<div>
+<img class="m_img" src="/static/main/image/material/four/D32钢.png">
+</div>
+<div class="card-body">
+<ul class="list-group list-group-flush">
+<li class="list-group-item">
+<h2 class="card-title">D32钢</h2>
+</li>
+<li class="list-group-item"></li>
+<li class="list-group-item list-group-item-secondary">用途</li>
+<li class="list-group-item">自然界中不应存在的人造金属材料，呈固态。用于高级强化场合。</li>
+<li class="list-group-item list-group-item-secondary">描述</li>
+<li class="list-group-item">强度超群，无法击穿，顺畅传导源石技艺，将重新订立武器材料的标准。</li>
+</ul>
+</div>
+</div>
+
+<div class="card card_operator">
+<div class="card-body">
+<ul class="list-group list-group-flush" id="operator">
+<li class="list-group-item">
+<h5 class="card-title">干员需求：</h5>
+</li>
+
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+<!--材料名片结束-->
+<!--页脚部分开始-->
+<div class="container-fluid container_bottom">
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+</div>
+<!--页脚部分结束-->
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+  </body>
+
+    <script>
+    var result={{result|safe}}
+    var length=result.length;
+    var ul=document.querySelector("#operator");
+    for(var i=0;i<length;i++)
+    {
+        if((i%6)==0)
+        {
+            var li=document.createElement('li');
+            li.className="list-group-item list_operator";
+        }
+        var img=document.createElement('img');
+        img.src=result[i][1];
+        img.width="120";
+        var a=document.createElement('a');
+        a.href="/operator/"+result[i][0]+"/";
+        a.appendChild(img);
+        li.appendChild(a);
+        if((i+1)%6==0||i==length-1)
+        {
+            ul.appendChild(li); 
+        }
+    }
+    </script>
+
+</html>

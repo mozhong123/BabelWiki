@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'shujukeshe/css/index_login.css' %}" rel="stylesheet"/>
+    <title>主页</title>
+</head>
+<body>
+<!-- 头部导航开始 -->
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class"navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operator/">干员档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/enemy/">敌人档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/material/">道具材料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/level/">关卡一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pool/">卡池一览</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pool_draw/">模拟抽卡</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--轮播部分开始-->
+<div class="container-fluid container_image">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-indicators">
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+</div>
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img src="/static/shujukeshe/image/media1.jpg" class="d-block w-100" alt="">
+</div>
+<div class="carousel-item">
+<img src="/static/shujukeshe/image/media2.jpg" class="d-block w-100" alt="">
+</div>
+<div class="carousel-item">
+<img src="/static/shujukeshe/image/media3.jpg" class="d-block w-100" alt="">
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+</div>
+<!--轮播部分结束-->
+<!--文字简介部分开始-->
+<div class="container-fluid" container_text>
+<figure class="text-center lh-lg">
+<blockquote class="blockquote fs-1">
+<p>欢迎来到BabelWiki!</p>
+</blockquote>
+<figcaption class="blockquote-footer fs-2">
+这里将会提供丰富的 <cite title="Source Title">明日方舟</cite> 游戏资料
+</figcaption>
+<blockquote class="blockquote fs-3">
+<a href="/user_homepage/" class="btn btn-primary btn-lg">欢迎回来{{ request.session.user_name}}！点击进入个人中心</a>
+</blockquote>
+</figure>
+</div>
+<!--文字简介部分结束-->
+<!--页脚部分开始-->
+<div class="container-fluid fixed-bottom" container_bottom>
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+</div>
+<!--页脚部分结束-->
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+
+</body>
+</html>

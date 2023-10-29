@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+}
+  .btn_me,.btn_logout{
+    background-color: #222222;
+    color: rgb(131, 131, 131);
+  }
+  .navbar-right a{
+    color: #fff;
+    font-size: 16px;
+  }
+  .navbar {
+    border-radius: 0;
+  }
+  .rare_group{
+    margin-top: 20px;
+  }
+  .btn_select{
+    margin-top: 20px;
+    width: 200px;
+  }
+  .table>tr>td{
+    border-right-width: 1px;
+    border-left-width: 1px;
+  }
+  .tr-h{
+    background-color: rgb(204, 204, 204);
+  }
+  

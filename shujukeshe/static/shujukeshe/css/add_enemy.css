@@ -1,0 +1,24 @@
+.btn_logout{
+    background-color: #222222;
+    color: rgb(131, 131, 131);
+  }
+  .navbar-right a{
+    color: #fff;
+    font-size: 16px;
+  }
+  .navbar {
+    border-radius: 0;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .btn_submit{
+    margin-top: 20px;
+    width: 100px;
+  }
+  .form-add-enemy {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    margin: 0 auto;
+  }

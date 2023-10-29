@@ -1,0 +1,35 @@
+/*body {
+  margin: 0;
+  background-image: url('../image/login_bg.jpg');
+	background-repeat:no-repeat;
+  background-position:0% 0%;
+  background-size:cover;
+}*/
+.btn_logout{
+    background-color: #222222;
+    color: rgb(131, 131, 131);
+  }
+  .navbar-right a{
+    color: #fff;
+    font-size: 16px;
+  }
+  .navbar {
+    border-radius: 0;
+  }
+  .h2{
+    margin-top: 50px;
+  }
+  .form-select input[type="text"] {
+    padding: 30px;
+  }
+  .input-group{
+    margin-top: 100px;
+  }
+  .btn_access{
+    width: 150px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .title{
+    margin-top:50px;
+  }

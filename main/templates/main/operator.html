@@ -1,0 +1,243 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'main/css/operator.css' %}" rel="stylesheet"/>
+    <title>干员档案</title>
+  </head>
+  <body>
+  <!-- 头部导航开始 -->
+
+<header>
+<nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class="navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/operator/">干员档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/enemy/">敌人档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/material/">道具材料</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link" href="/level/">关卡一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pool/">卡池一览</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pool_draw/">模拟抽卡</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--关卡表格开始-->
+<div class="container">
+<form class="form-select" action="/operator/" method="get">
+
+<div class="form-group jobs_group">
+<span>职业：</span>
+{% if job_pioneer == '先锋' %}
+<input type="checkbox" class="btn-check"  name="jobs_pioneer" id="pioneer" value="pioneer" autocomplete="off" checked>
+{% elif job_pioneer == '' %}
+<input type="checkbox" class="btn-check"  name="jobs_pioneer" id="pioneer" value="pioneer" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-success" for="pioneer">先锋干员</label>
+
+{% if job_guards == '近卫' %}
+<input type="checkbox" class="btn-check"  name="jobs_guards" id="guards" value="guards" autocomplete="off" checked>
+{% elif job_guards == '' %}
+<input type="checkbox" class="btn-check"  name="jobs_guards" id="guards" value="guards" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-success" for="guards">近卫干员</label>
+
+{% if job_sniper == '狙击' %}
+<input type="checkbox" class="btn-check"  name="jobs_sniper" id="sniper" value="sniper" autocomplete="off" checked>
+{% elif job_sniper == '' %}
+<input type="checkbox" class="btn-check"  name="jobs_sniper" id="sniper" value="sniper" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-success" for="sniper">狙击干员</label>
+
+{% if job_armor == '重装' %}
+<input type="checkbox" class="btn-check"  name="jobs_armor" id="armor" value="armor" autocomplete="off" checked>
+{% elif job_armor == '' %}
+<input type="checkbox" class="btn-check"  name="jobs_armor" id="armor" value="armor" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-success" for="armor">重装干员</label>
+
+{% if job_doctor == '医疗' %}
+<input type="checkbox" class="btn-check"  name="jobs_doctor" id="doctor" value="doctor" autocomplete="off" checked>
+{% elif job_doctor == '' %}
+<input type="checkbox" class="btn-check"  name="jobs_doctor" id="doctor" value="doctor" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-success" for="doctor">医疗干员</label>
+
+{% if job_support == '辅助' %}
+<input type="checkbox" class="btn-check"  name="jobs_support" id="support" value="support" autocomplete="off" checked>
+{% elif job_support == '' %}
+<input type="checkbox" class="btn-check"  name="jobs_support" id="support" value="support" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-success" for="support">辅助干员</label>
+
+{% if job_warlock == '术士' %}
+<input type="checkbox" class="btn-check"  name="jobs_warlock" id="warlock" value="warlock" autocomplete="off" checked>
+{% elif job_warlock == '' %}
+<input type="checkbox" class="btn-check"  name="jobs_warlock" id="warlock" value="warlock" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-success" for="warlock">术士干员</label>
+
+{% if job_special == '特种' %}
+<input type="checkbox" class="btn-check"  name="jobs_special" id="special" value="special" autocomplete="off" checked>
+{% elif job_special == '' %}
+<input type="checkbox" class="btn-check"  name="jobs_special" id="special" value="special" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-success" for="special">特种干员</label>
+</div>
+
+<div class="form-group sex_group">
+<span>性别：</span>
+{% if sex_male == '男' %}
+<input type="checkbox" class="btn-check"  name="sex_male" id="male" value="male" autocomplete="off" checked>
+{% elif sex_male == '' %}
+<input type="checkbox" class="btn-check"  name="sex_male" id="male" value="male" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-danger" for="male">男性干员</label>
+{% if sex_female == '女' %}
+<input type="checkbox" class="btn-check"  name="sex_female" id="female" value="female" autocomplete="off" checked>
+{% elif sex_female == '' %}
+<input type="checkbox" class="btn-check"  name="sex_female" id="female" value="female" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-danger" for="female">女性干员</label>
+</div>
+
+<div class="form-group rare_group">
+<span>稀有度：</span>
+
+{% if rare_six == '六星' %}
+<input type="checkbox" class="btn-check"  name="rare_six" id="six" value="six" autocomplete="off" checked>
+{% elif rare_six == '' %}
+<input type="checkbox" class="btn-check"  name="rare_six" id="six" value="six" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-warning" for="six">六星干员</label>
+
+{% if rare_five == '五星' %}
+<input type="checkbox" class="btn-check"  name="rare_five" id="five" value="five" autocomplete="off" checked>
+{% elif rare_five == '' %}
+<input type="checkbox" class="btn-check"  name="rare_five" id="five" value="five" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-warning" for="five">五星干员</label>
+
+{% if rare_four == '四星' %}
+<input type="checkbox" class="btn-check"  name="rare_four" id="four" value="four" autocomplete="off" checked>
+{% elif rare_four == '' %}
+<input type="checkbox" class="btn-check"  name="rare_four" id="four" value="four" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-warning" for="four">四星干员</label>
+
+</div>
+
+<div>
+<button type="submit" class="btn btn-primary btn_select">筛选</button>
+</div>
+
+</form>
+</div>
+<!--筛选界面结束-->
+<!--表格部分开始-->
+<div class="container">
+<table id="operator_table" class="table table-bordered table-hover align-middle text-center">
+
+<thead>
+<tr>
+<th>头像</th>
+<th>代号</th>
+<th>职业</th>
+<th>稀有度</th>
+<th>部署位</th>
+<th>性别</th>
+<th>血量</th>
+<th>攻击</th>
+<th>防御</th>
+<th>法抗</th>
+<th>再部署时间</th>
+<th>部署费用</th>
+<th>阻挡数</th>
+<th>攻速</th>
+</tr>
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+</div>
+<!--表格部分结束-->
+<!--页脚部分开始-->
+<div class="container-fluid container_bottom">
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+</div>
+<!--页脚部分结束-->
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+
+
+   <script>
+    var result={{ result | safe }};
+    var tbody = document.querySelector('tbody');
+    for (var i = 0; i < result.length; i++){
+        var tr = document.createElement('tr');
+        tbody.appendChild(tr);
+        for (var k=1;k<result[0].length;k++) {
+            var td = document.createElement('td');
+            if(k==1)
+            {
+                td.width="100";
+                td.height="100";
+            }
+            if(k==1)
+            {
+                var headimg=document.createElement('img');
+                var link=document.createElement('a');
+                headimg.src=result[i][k];
+                headimg.width="100";
+                headimg.height="100";
+                link.href="/operator/"+result[i][k+1]+"/";
+                td.appendChild(link);
+                link.appendChild(headimg);
+            }
+            else
+            {
+                td.innerHTML = result[i][k];
+            }
+            tr.appendChild(td);
+        }
+    }
+   </script>
+  </body>
+</html>

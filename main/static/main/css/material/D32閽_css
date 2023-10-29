@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+}
+  .btn_me,.btn_logout{
+    background-color: #222222;
+    color: rgb(131, 131, 131);
+  }
+  .navbar-right a{
+    color: #fff;
+    font-size: 16px;
+  }
+  .navbar {
+    border-radius: 0;
+  }
+  .m_img{
+    width: 240px;
+  }
+  .card_material{
+    width: 500px;
+  }
+  .card_operator{
+    width: 820px;
+  }
+  .list_operator{
+    margin-top: 20px;
+  }

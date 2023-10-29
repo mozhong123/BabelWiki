@@ -1,0 +1,127 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'main/css/enemy.css' %}" rel="stylesheet"/>
+    <title>敌人档案</title>
+  </head>
+  <body>
+  <!-- 头部导航开始 -->
+
+<header>
+<nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class="navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operator/">干员档案</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link active" aria-current="page" href="/enemy/">敌人档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/material/">道具材料</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link" href="/level/">关卡一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pool/">卡池一览</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pool_draw/">模拟抽卡</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--关卡表格开始-->
+<div class="container container_enemy_table">
+<table class="table table-hover table-bordered text-center align-middle">
+<thead>
+<tr class="table-light">
+<th>头像</th>
+<th width="90">名称</th>
+<th width="70">地位</th>
+<th width="70">种类</th>
+<th>能力</th>
+<th width="70">攻击力</th>
+<th width="70">耐久</th>
+<th width="70">防御力</th>
+<th width="90">法术抗性</th>
+<th width="130">首次出现的关卡</th>
+</tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+</div>
+<!--关卡表格结束-->
+<!--页脚部分开始-->
+<div class="container-fluid container_bottom">
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+</div>
+<!--页脚部分结束-->
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+
+    <script>
+    var result={{result|safe}};
+    var length=result.length;
+    var x_length=result[0].length;
+    var tbody=document.querySelector('tbody');
+    for(var i=0;i<length;i++)
+    {
+        var tr=document.createElement('tr');
+        for(var j=0;j<x_length;j++)
+        {
+            var td=document.createElement('td');
+            if(j==0)
+            {
+                var img=document.createElement('img');
+                img.src=result[i][0];
+                img.width="90";
+                td.appendChild(img);
+                tr.appendChild(td);
+            }
+            if(j>0&&j<x_length-1)
+            {
+                td.innerHTML=result[i][j];
+                tr.appendChild(td);
+            }
+            if(j==x_length-1)
+            {
+                var a=document.createElement('a');
+                a.href="/level/"+result[i][j]+"/";
+                a.innerHTML=result[i][j];
+                td.appendChild(a);
+                tr.appendChild(td);
+            }
+        }
+        tbody.appendChild(tr);
+    }
+    </script>
+  </body>
+</html>

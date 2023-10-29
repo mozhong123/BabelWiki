@@ -1,0 +1,169 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'main/css/pool.css' %}" rel="stylesheet"/>
+      <script src="https://code.hcharts.cn/highcharts/highcharts.js"></script>
+        <script src="https://code.hcharts.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <title>卡池一览</title>
+  </head>
+  <body>
+  <!-- 头部导航开始 -->
+
+<header>
+<nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class="navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operator/">干员档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/enemy/">敌人档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/material/">道具材料</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link" href="/level/">关卡一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pool/">卡池一览</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/pool_draw/">模拟抽卡</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--抽卡开始-->
+        <div id="container" style="min-width:400px;height:400px"></div>
+        <script>
+            var chart = Highcharts.chart('container',{
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: '各星级、职业干员数目'
+    },
+    subtitle: {
+        text: '数据来源: {{ name }}'
+    },
+    xAxis: {
+        categories: [
+            '先锋','近卫','狙击','重装','医疗','辅助','术师','特种'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '数目 (个)'
+        }
+    },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y:.1f} 个</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: '四星',
+        data: [{{ result.0 }}, {{ result.1 }}, {{ result.2 }}, {{ result.3 }},{{ result.4 }}, {{ result.5 }}, {{ result.6 }}]
+    }, {
+        name: '五星',
+        data: [{{ result.7 }}, {{ result.8 }}, {{ result.9 }}, {{ result.10 }},{{ result.11 }}, {{ result.12 }}, {{ result.13 }}]
+    }, {
+        name: '六星',
+        data: [{{ result.14 }}, {{ result.15 }}, {{ result.16 }}, {{ result.17 }},{{ result.18 }}, {{ result.19 }}, {{ result.20 }}]
+    }]
+});
+        </script>
+  <div class="container">
+        <a class="btn btn-outline-info account_btn" href="/res/">返回抽卡界面</a>
+        <a class="btn btn-outline-info account_btn" href="/draw_record/">抽卡记录</a>
+        <a class="btn btn-outline-info account_btn" href="/analysis_star/">干员星级占比</a>
+        <a class="btn btn-outline-info account_btn" href="/analysis_operator/">干员数目分析</a>
+  </div>
+<!--关卡表格结束-->
+<!--页脚部分开始-->
+<!--页脚部分结束-->
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+
+    <script>
+    var result={{result|safe}};
+    var length=result.length;
+    var tbody=document.querySelector('tbody');
+    for(var i=0;i<length;i++)
+    {
+        var tr=document.createElement('tr');
+        for(var j=0;j<4;j++)
+        {
+            if(j==0)
+            {
+                var td=document.createElement('td');
+                var img=document.createElement('img');
+                img.width="400";
+                img.src=result[i][1];
+                td.appendChild(img);
+                tr.appendChild(td);
+            }
+            if(j==1)
+            {
+                var td=document.createElement('td');
+                td.innerHTML=result[i][0];
+                tr.appendChild(td);
+            }
+            if(j>1)
+            {
+                var td=document.createElement('td');
+                td.innerHTML=result[i][j];
+                tr.appendChild(td);
+            }
+        }
+        var x_length=result[0].length;
+        var td_operator=document.createElement('td');
+        for(var k=4;k<x_length;k=k+2)
+        {
+            var a=document.createElement('a');
+            a.href="/operator/"+result[i][k]+"/";
+            var img=document.createElement('img');
+            img.src=result[i][k+1];
+            img.width="90";
+            a.appendChild(img);
+            td_operator.appendChild(a);
+        }
+        tr.appendChild(td_operator);
+        tbody.appendChild(tr);
+    }
+    </script>
+  </body>
+</html>

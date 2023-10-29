@@ -1,0 +1,328 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'shujukeshe/css/add_operator.css' %}" rel="stylesheet"/>
+    <title>添加干员</title>
+  </head>
+  <body>
+    <!-- 头部导航开始 -->
+<header>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class"navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operator/">干员档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/enemy/">敌人档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/material/">道具材料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/level/">关卡一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pool/">卡池一览</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pool_draw/">模拟抽卡</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }},欢迎来到个人中心</span>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--表单部分开始-->
+<div class="container">
+            <div class="col">
+                <form class="form-add-operator" action="/add_operator/" method="get">
+
+                  <div class="form-group">
+                    {{ add_Operator_form.name.label_tag }}
+                    {{ add_Operator_form.name}}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.career.label_tag }}
+                    {{ add_Operator_form.career }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.rarity.label_tag }}
+                    {{ add_Operator_form.rarity }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.position.label_tag }}
+                    {{ add_Operator_form.position }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.sex.label_tag }}
+                    {{ add_Operator_form.sex }}
+                  </div>           
+
+                  <div class="form-group">
+                    {{ add_Operator_form.retime.label_tag }}
+                    {{ add_Operator_form.retime }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.refair.label_tag }}
+                    {{ add_Operator_form.refair }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.block.label_tag }}
+                    {{ add_Operator_form.block }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.ATI.label_tag }}
+                    {{ add_Operator_form.ATI }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.material.label_tag }}
+                    {{ add_Operator_form.material }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.quantity.label_tag }}
+                    {{ add_Operator_form.quantity }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.HP1.label_tag }}
+                    {{ add_Operator_form.HP1 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.ATK1.label_tag }}
+                    {{ add_Operator_form.ATK1 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.DEF1.label_tag }}
+                    {{ add_Operator_form.DEF1 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.SR1.label_tag }}
+                    {{ add_Operator_form.SR1 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.HP2.label_tag }}
+                    {{ add_Operator_form.HP2 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.ATK2.label_tag }}
+                    {{ add_Operator_form.ATK2 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.DEF2.label_tag }}
+                    {{ add_Operator_form.DEF2 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.SR2.label_tag }}
+                    {{ add_Operator_form.SR2 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.HP3.label_tag }}
+                    {{ add_Operator_form.HP3 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.ATK3.label_tag }}
+                    {{ add_Operator_form.ATK3 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.DEF3.label_tag }}
+                    {{ add_Operator_form.DEF3 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.SR3.label_tag }}
+                    {{ add_Operator_form.SR3 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.HP4.label_tag }}
+                    {{ add_Operator_form.HP4 }}
+                  </div>
+
+                  <div class="form-group">
+                    {{ add_Operator_form.ATK4.label_tag }}
+                    {{ add_Operator_form.ATK4 }}
+                  </div>
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.DEF4.label_tag }}
+                    {{ add_Operator_form.DEF4 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.SR4.label_tag }}
+                    {{ add_Operator_form.SR4 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.talent_name1.label_tag }}
+                    {{ add_Operator_form.talent_name1 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.describe1.label_tag }}
+                    {{ add_Operator_form.describe1 }}
+
+                  <div class="form-group">
+                    {{ add_Operator_form.talent_name2.label_tag }}
+                    {{ add_Operator_form.talent_name2 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.describe2.label_tag }}
+                    {{ add_Operator_form.describe2 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.potential2.label_tag }}
+                    {{ add_Operator_form.potential2 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.potential3.label_tag }}
+                    {{ add_Operator_form.potential3 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.potential4.label_tag }}
+                    {{ add_Operator_form.potential4 }}
+
+                  <div class="form-group">
+                    {{ add_Operator_form.potential5.label_tag }}
+                    {{ add_Operator_form.potential5 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.potential6.label_tag }}
+                    {{ add_Operator_form.potential6 }}
+
+                  <div class="form-group">
+                    {{ add_Operator_form.skill_name1.label_tag }}
+                    {{ add_Operator_form.skill_name1 }}
+
+                  <div class="form-group">
+                    {{ add_Operator_form.skill_describe1.label_tag }}
+                    {{ add_Operator_form.skill_describe1 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.initial1.label_tag }}
+                    {{ add_Operator_form.initial1 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.deplete1.label_tag }}
+                    {{ add_Operator_form.deplete1 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.continued1.label_tag }}
+                    {{ add_Operator_form.continued1 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.skill_name2.label_tag }}
+                    {{ add_Operator_form.skill_name2 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.skill_describe2.label_tag }}
+                    {{ add_Operator_form.skill_describe2 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.initial2.label_tag }}
+                    {{ add_Operator_form.initial2 }}
+
+                  <div class="form-group">
+                    {{ add_Operator_form.deplete2.label_tag }}
+                    {{ add_Operator_form.deplete2 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.continued2.label_tag }}
+                    {{ add_Operator_form.continued2 }}                    
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.skill_name3.label_tag }}
+                    {{ add_Operator_form.skill_name3 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.skill_describe3.label_tag }}
+                    {{ add_Operator_form.skill_describe3 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.initial3.label_tag }}
+                    {{ add_Operator_form.initial3 }}
+
+
+                  <div class="form-group">
+                    {{ add_Operator_form.deplete3.label_tag }}
+                    {{ add_Operator_form.deplete3 }}
+
+                  <div class="form-group">
+                    {{ add_Operator_form.continued3.label_tag }}
+                    {{ add_Operator_form.continued3 }}                    
+
+                  <div class="text-center">
+                      <button type="submit" class="btn btn-danger btn_submit">提交</button>
+                  </div>
+                </form>
+            </div>
+    </div>
+<!--表单部分结束-->
+<!--页脚部分开始-->
+<div class="container-fluid container_bottom">
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+</div>
+<!--页脚部分结束-->
+
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+   
+  </body>
+</html>

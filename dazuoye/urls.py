@@ -1,0 +1,60 @@
+from django.contrib import admin
+from django.urls import path
+from shujukeshe import views
+from main import views as views_main
+from app01 import views as views_app
+from django.urls import include
+
+urlpatterns = [
+
+    path('admin/', admin.site.urls),
+    path('index/', views.index),
+    path('login/', views.login),
+    path('register/', views.register),
+    path('logout/', views.logout),
+    path('captcha/', include('captcha.urls')),
+    path('confirm/', views.user_confirm),
+    path('apply_confirm/', views_app.user_apply_confirm),
+    path('user_homepage/', views.user_homepage),
+    path('modify/', views.modify),
+    path('repassword/', views.repassword),
+    path('contact_us/', views.contact_us),
+    path('operator/', views_main.operator),
+    path('operator/W/', views_main.operator_W),
+    path('material/', views_main.material),
+    path('material/双极纳米片/', views_main.material_shuangjinamipian),
+    path('material/酮阵列/', views_main.material_tongzhenlie),
+    path('material/D32钢/', views_main.material_D32gang),
+    path('level/', views_main.level),
+    path('pool/', views_main.pool),
+    path('enemy/', views_main.enemy),
+    path('vip_access/', views.vip_access),
+    path('add_operator/', views.add_operator),
+    path('delete_operator/', views.delete_operator),
+    path('add_material/', views.add_material),
+    path('delete_material/', views.delete_material),
+    path('add_pool/', views.add_pool),
+    path('delete_pool/', views.delete_pool),
+    path('add_enemy/', views.add_enemy),
+    path('delete_enemy/', views.delete_enemy),
+    path('add_level/', views.add_level),
+    path('delete_level/', views.delete_level),
+    path('record/', views_app.record),
+    path('<int:nid>/manage/', views_app.manage1),
+    path('<int:nid>/process1/', views_app.process1),
+    path('<int:nid>/process2/', views_app.process2),
+    path('manage/', views_app.manage),
+    path('process/', views_app.process),
+    path('', views.to_index),
+    path('pool_draw/', views_main.gacha),
+    path('res/', views_main.gacha_choice),
+    path('draw_one/', views_main.gacha_add_one),
+    path('draw_ten/', views_main.gacha_add_ten),
+    path('draw_record/', views_main.gacha_record),
+    path('analysis_star/', views_main.gacha_analyse),
+    path('analysis_operator/', views_main.gacha_analyse_operator),
+    path('upload/',views.upload),
+    path('card_record/',views.card_record),
+    path('get_token/',views.get_token),
+
+]

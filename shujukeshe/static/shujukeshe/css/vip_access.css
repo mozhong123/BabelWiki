@@ -1,0 +1,27 @@
+/*body {
+  margin: 0;
+  background-image: url('../image/login_bg.jpg');
+	background-repeat:no-repeat;
+  background-position:0% 0%;
+  background-size:cover;
+}*/
+  .btn_logout{
+    background-color: #222222;
+    color: rgb(131, 131, 131);
+  }
+  .navbar-right a{
+    color: #fff;
+    font-size: 16px;
+  }
+  .navbar {
+    border-radius: 0;
+  }
+  .input-group{
+    margin-bottom: 45px;
+  }
+  .h5{
+    font-style: oblique;
+  }
+  .btn_access{
+    width: 150px;
+  }

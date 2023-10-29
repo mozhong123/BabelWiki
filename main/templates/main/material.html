@@ -1,0 +1,134 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'main/css/material.css' %}" rel="stylesheet"/>
+    <title>材料一览</title>
+  </head>
+  <body>
+
+<header>
+<nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid container_navbar">
+            <span class="navbar-brand">
+            <img src="/static/shujukeshe/image/babelwiki.svg" alt="" width="60" height="48" class="d-inline-block">BabelWiki</span>
+            <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">主页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/operator/">干员档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/enemy/">敌人档案</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/material/">道具材料</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link" href="/level/">关卡一览</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pool/">卡池一览</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pool_draw/">模拟抽卡</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us/" target="_blank">联系我们</a>
+            </li>
+            </ul>
+            <div class="navbar navbar-right">
+                <span class="nav-item">您好！{{ request.session.user_name }}</span>
+                <a href="/user_homepage/" class="btn  navbar-btn btn_me">个人中心</a>
+                <a href="/logout/" class="btn  navbar-btn btn_logout">退出登录</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--头部导航结束-->
+<!--关卡表格开始-->
+<div class="container">
+<form class="form-select" action="/material/" method="get">
+
+<div class="form-group rare_group">
+<span>稀有度：</span>
+{% if rare_four == '四星' %}
+<input type="checkbox" class="btn-check"  name="rare_four" id="four" value="four" autocomplete="off" checked>
+{% elif rare_four == '' %}
+<input type="checkbox" class="btn-check"  name="rare_four" id="four" value="four" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-warning" for="four">四星材料</label>
+
+{% if rare_three == '三星' %}
+<input type="checkbox" class="btn-check"  name="rare_three" id="three" value="three" autocomplete="off" checked>
+{% elif rare_three == '' %}
+<input type="checkbox" class="btn-check"  name="rare_three" id="three" value="three" autocomplete="off">
+{% endif %}
+<label class="btn btn-outline-success" for="three">三星材料</label>
+
+</div>
+<div>
+<button type="submit" class="btn btn-info btn_select">筛选</button>
+</div>
+
+</form>
+</div>
+<!--筛选界面结束-->
+<!--表格部分开始-->
+<div class="container">
+<table id="material_table" class="table table-bordered table-hover text-center">
+ 
+</table>
+</div>
+<!--表格部分结束-->
+<!--页脚部分开始-->
+<div class="container-fluid container_bottom">
+<hr>
+<figure class="text-center lh-lg">
+<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by zhaoyiqi,wenzengliang,huakaiwen </p>
+</hr>
+</figure>
+</div>
+<!--页脚部分结束-->
+   <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+   <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.6/umd/popper.js"></script>
+
+
+   <script>
+    var result={{ result | safe }};
+    var table = document.querySelector('table');
+    var length=result.length;
+    for(var i=0;i<length;i++)
+    {
+        if((i%7)==0)
+        {
+            var tr=document.createElement('tr');
+            var tr_h=document.createElement('tr');
+        }
+        var img=document.createElement('img');
+        img.src=result[i][1];
+        img.width="125";
+        var a=document.createElement('a');
+        a.href="/material/"+result[i][0]+"/";
+        a.appendChild(img);
+        var td=document.createElement('td');
+        var td_h=document.createElement('td');
+        tr_h.className="tr-h";
+        td_h.innerHTML=result[i][0];
+        td.appendChild(a);
+        tr.appendChild(td);
+        tr_h.appendChild(td_h);
+        if((i+1)%7==0||i==length-1)
+        {
+            table.appendChild(tr_h); 
+            table.appendChild(tr); 
+        }
+    }
+   </script>
+  </body>
+</html>
